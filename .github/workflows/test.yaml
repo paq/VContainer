@@ -50,8 +50,8 @@ jobs:
         #   license: UNITY_LICENSE_2018_4
         #   externalPackage: 'None'
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/cache@v2
+    - uses: actions/checkout@v4
+    - uses: actions/cache@v4
       with:
         path: VContainer/Library
         key: Library-VContainer-${{ matrix.unityVersion }}-${{ matrix.feature }}
@@ -77,14 +77,14 @@ jobs:
       run: |
         sed -i '4a "VContainer.EnableCodeGen",' ./VContainer/Assets/VContainer/Tests/VContainer.Tests.asmdef
   
-    - uses: game-ci/unity-test-runner@v2.0-alpha-4
+    - uses: game-ci/unity-test-runner@v4
       env:
         UNITY_LICENSE: ${{ secrets[matrix.license] }}
       with:
         projectPath: ./VContainer
         unityVersion: ${{ matrix.unityVersion }}
         # customParameters: -testSettingsFile ./testSettings.json
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: Test results
         path: artifacts
