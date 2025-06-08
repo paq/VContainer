@@ -86,7 +86,7 @@ jobs:
       with:
         projectPath: ./VContainer
         unityVersion: ${{ matrix.unityVersion }}
-        artifactsPath: ${{ matrix.unityVersion }}-artifacts
+        artifactsPath: ${{ matrix.unityVersion }}-${{ matrix.feature }}-artifacts
         # customParameters: -testSettingsFile ./testSettings.json
     - uses: actions/upload-artifact@v4
       with:
